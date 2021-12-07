@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+        color: rgb(36, 31, 32);
+        font-size: 4em;
+        }
+
+        body {
+        background-color: whitesmoke;
+        }
+
+        #container {
+        max-width: 900px;
+        margin: auto;
+        }
+
+        #form {
+        width: 60%;
+        margin-left: 2%;
+        /* background-color: black; */
+        }
+
+        #form form {
+        width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Here is some movie info:</h1>
+        <h3>movie title: {{ movie['title'] }} </h3>
+        <h3>genre: {{ movie['genres'] }} </h3>
+        <img src="https://d19o3rvvi2wlie.cloudfront.net/{{movieId}}.jpg", alt="{{ movie['title'] }}">
+        
+    </div>
+    <div>
+        <h3>People who watched this also watched:</h3>
+        <ul>
+            {% for new_movie in recommended_movies %}
+                <li><a href="{{url_for('movie_info', movieId=new_movie['movieId'])}}">{{ new_movie['title'] }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
